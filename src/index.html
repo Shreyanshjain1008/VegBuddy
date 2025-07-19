@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>VegBuddy Bot Page</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      display: flex;
+      height: 100vh;
+      background: #f6fff6;
+    }
+
+    .left-panel {
+      width: 30%;
+      background: #e0f0ff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+      position: relative;
+    }
+
+    .left-panel img {
+      width: 250px;
+      height: 400px;
+      object-fit: contain;
+      margin-bottom: 20px;
+    }
+
+    .speech-bubble {
+      background: white;
+      color: #333;
+      padding: 15px 20px;
+      border-radius: 15px;
+      position: relative;
+      max-width: 220px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      text-align: center;
+      font-size: 16px;
+    }
+
+    .speech-bubble::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 10px solid transparent;
+  border-top-color: white;
+}
+
+
+    .right-panel {
+      width: 70%;
+      padding: 60px;
+    }
+
+    .title {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: #0b93f6;
+    }
+
+    .subtitle {
+      font-size: 20px;
+      color: #333;
+    }
+    .chatbot-pointer {
+  position: fixed;
+  bottom: 10px;   /* ✅ Very close to bottom */
+  right: 40px;    /* Adjust to align with bot if needed */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: float 2s ease-in-out infinite;
+  z-index: 1000;
+}
+
+
+
+.arrow {
+  font-size: 40px;
+  color: #0b93f6;
+  transform: rotate(-45deg);
+}
+
+.arrow-text {
+  background-color: #0b93f6;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 12px;
+  margin-bottom: 5px;
+  font-size: 14px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+      .left-panel, .right-panel {
+        width: 100%;
+      }
+      .left-panel img {
+        height: 300px;
+        width: 180px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="left-panel">
+    <!-- 🔁 Replace src with your bot image -->
+    <img src="https://www.shutterstock.com/image-vector/happy-robot-3d-ai-character-600nw-2464455965.jpg" alt="Bot Image">
+
+    <div class="speech-bubble">Hii!! Welcome to VegBuddy</div>
+  </div>
+
+  <div class="right-panel">
+    <div class="title">Meet VegBuddy</div>
+    <div class="subtitle">Your AI-powered assistant for smart, vegetarian living 🌱</div>
+  </div>
+  <div class="chatbot-pointer">
+  <div class="arrow-text">Let's Goooo!!!!</div>
+  <div class="arrow">&#10148;</div>
+</div>
+
+  <script>
+  window.watsonAssistantChatOptions = {
+    integrationID: "1ffcb086-1012-4ae9-8915-a24391f83b74", // The ID of this integration.
+    region: "eu-de", // The region your integration is hosted in.
+    serviceInstanceID: "ad086b33-8610-4a44-bd22-079f2f3eb6e7", // The ID of your service instance.
+    onLoad: async (instance) => { await instance.render(); }
+  };
+  setTimeout(function(){
+    const t=document.createElement('script');
+    t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+    document.head.appendChild(t);
+  });
+</script>
+
+</body>
+</html>
+
+
